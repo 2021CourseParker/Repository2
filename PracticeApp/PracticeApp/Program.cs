@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PracticeApp
 {
@@ -28,8 +29,22 @@ namespace PracticeApp
             {
                 Console.WriteLine(someArray[i]);
             }
-          
-            
+
+            List<int> someData = new List<int>();
+
+
+
+            for (int i = 0; i < 5; i++)
+            {
+                someData.Add(i);
+            }
+
+
+            foreach (var item in someData)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
 
             Console.Read();
         }
