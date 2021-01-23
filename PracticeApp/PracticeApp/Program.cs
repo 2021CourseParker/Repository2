@@ -7,44 +7,20 @@ namespace PracticeApp
     {
         static void Main(string[] args)
         {
-            // VAR
-            // METHODS
-            // ARRAYS
-            // LIST
-            // CLASS
+            Hero hero = new Hero();
+            hero.Damage = 5;
+            hero.Experience = 0;
+            hero.NewLevelExperience = 10;
 
+            hero.ShowInformation();
+            hero.Move();
 
-            int[] someArray = new int[5];
-                            
-            
-            int counter = 0;
-
-            for (int i = 0; i < someArray.Length; i++)
+            if (hero.Experience >= hero.NewLevelExperience)
             {
-                someArray[i] = i;                
+                hero.LevelUp();
+                hero.Experience = 0;
+                hero.NewLevelExperience = hero.NewLevelExperience + 1;
             }
-
-
-            for (int i = 0; i < someArray.Length; i++)
-            {
-                Console.WriteLine(someArray[i]);
-            }
-
-            List<int> someData = new List<int>();
-
-
-
-            for (int i = 0; i < 5; i++)
-            {
-                someData.Add(i);
-            }
-
-
-            foreach (var item in someData)
-            {
-                Console.WriteLine(item.ToString());
-            }
-
 
             Console.Read();
         }
