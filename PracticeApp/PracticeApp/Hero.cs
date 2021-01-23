@@ -19,15 +19,27 @@ namespace PracticeApp
             Console.WriteLine("-------------------------------------");
         }
 
-        //public void Attack(Monster monster)
-        //{
-        //    if (monster.Health <= 0)
-        //    {
-        //        this.Experience = this.Experience + monster.Experience;
-        //        Console.WriteLine("Monster is dead. You gained " + monster.Experence + " experience");
-        //    }
-        //    monster.Health = monster.Health - this.Damage;
-        //}
+        public void Attack(Monster monster)
+        {
+            int initailMonsterHealth = monster.Health;
+            Console.WriteLine("Hero attacks monster");
+            monster.Health = monster.Health - this.Damage;          // remove health from monster
+            Console.WriteLine("monster health: " + monster.Health + "/" + initailMonsterHealth);
+            
+            if (monster.Health <= 0)    // is the monster dead
+            {
+                this.Experience = this.Experience + monster.Experience;
+                Console.WriteLine("Monster is dead. You gained " + monster.Experience + " experience");
+
+                if (this.Experience >= this.NewLevelExperience)     // if monster is dead and experience is enough - level UP
+                {
+                    this.LevelUp();
+                    this.Experience = 0;
+                    this.NewLevelExperience = this.NewLevelExperience + 1;
+                }
+            }
+            
+        }
 
         public void Move()
         {

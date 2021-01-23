@@ -19,13 +19,17 @@ namespace PracticeApp
 
             hero.ShowInformation();
             hero.Move();
+            hero.Attack(monster);
+            hero.Attack(monster);
+            hero.ShowInformation();
 
-            if (hero.Experience >= hero.NewLevelExperience)
-            {
-                hero.LevelUp();
-                hero.Experience = 0;
-                hero.NewLevelExperience = hero.NewLevelExperience + 1;
-            }
+            monster.Health = 10; // instead of creating new monster, same monster will be alive again
+            hero.Attack(monster);
+            hero.Attack(monster);
+
+            Console.WriteLine("*****************************");
+            monster.ShowInformation();
+            hero.ShowInformation();
 
             Console.Read();
         }
