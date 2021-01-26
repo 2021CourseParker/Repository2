@@ -13,6 +13,7 @@ namespace PracticeApp
        
         public void ShowInformation()
         {
+
             Console.WriteLine("Hero Name: " + HeroName);
             Console.WriteLine("class: " + Class);
             Console.WriteLine("skill:" + Skills);
