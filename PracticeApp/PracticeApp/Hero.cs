@@ -6,18 +6,18 @@ namespace PracticeApp
 {
     class Hero
     {
-        public int Damage { get; set; }
-        public int Experience { get; set; }
-        public int NewLevelExperience { get; set; }
-        public int Level { get; set; } = 1;
+        public int Damage { get; set; }             
+        public int Experience { get; set; }         
+        public int NewLevelExperience { get; set; } // How much experience Hero needs for next level
+        public int Level { get; set; } = 1;         // Current level of a hero
 
         public string HeroName { get; set; }
-        public string Class { get; set; }
-        public List<string> Skills { get; set; }       
-        public List<string> KilledMonsters { get; set; }
+        public string Class { get; set; }           // Type of hero
+        public List<string> Skills { get; set; }
+        public List<string> KilledMonsters { get; set; }    // Killed monsters name list
 
 
-        public Hero()
+        public Hero()       // Defining Hero data in constructor
         {
             this.HeroName = "Jojo";
             this.Class = "Saber";
@@ -46,24 +46,24 @@ namespace PracticeApp
 
         public void Attack(Monster monster)
         {         
-            int initailMonsterHealth = monster.Health;
+            int initialMonsterHealth = monster.Health;          // Monster health before attack
             Console.WriteLine("Hero attacks monster");
-            monster.Health = monster.Health - this.Damage;          // remove health from monster
-            Console.WriteLine("monster health: " + monster.Health + "/" + initailMonsterHealth);
-            
-            if (monster.Health <= 0)    // is the monster dead
+            monster.Health = monster.Health - this.Damage;          // set monster health after attack
+            Console.WriteLine("monster health: " + monster.Health + "/" + initialMonsterHealth);
+                        
+            if (monster.Health <= 0)    // check after attack if the the monster is dead 
             {
-                this.Experience = this.Experience + monster.Experience;
+                this.Experience = this.Experience + monster.Experience; // since monster is dead increase experience
                 Console.WriteLine("Monster is dead. You gained " + monster.Experience + " experience");
 
-                this.UpdateKilledMonsters(monster);
+                this.UpdateKilledMonsters(monster);         // add this monster to the list of killed monsters
                 
 
                 if (this.Experience >= this.NewLevelExperience)     // if monster is dead and experience is enough - level UP
                 {
                     this.LevelUp();
                     this.Experience = 0;
-                    this.NewLevelExperience = this.NewLevelExperience + 1;
+                    this.NewLevelExperience = this.NewLevelExperience + 1;      // on next Level we will need more experience to Level Up
                 }
             }
             
@@ -77,7 +77,7 @@ namespace PracticeApp
         public void LevelUp()
         {
             this.Level++;
-            this.Experience = 0;
+            this.Experience = 0;                // When you Level UP your experience needs to be back to zero  (10/10) ==> (0/11)
             Console.WriteLine("Hero level UP!");
         }
 
@@ -85,18 +85,18 @@ namespace PracticeApp
         public void ShowSkills()
         {
             Console.WriteLine("Hero Skills:");
-            foreach (var skill in this.Skills)
+            foreach (var skill in this.Skills)      // Go through the list one by one
             {
-                Console.WriteLine("- " + skill);
+                Console.WriteLine("- " + skill);    // show each element of the list
             }
         }
 
         public void ShowKilledMonsters()
         {
             Console.WriteLine("Killed monsters:");
-            foreach (var killedMonster in this.KilledMonsters)
+            foreach (var killedMonster in this.KilledMonsters)  // Go through the list one by one
             {                
-                Console.WriteLine("- " + killedMonster);
+                Console.WriteLine("- " + killedMonster);        // show each element of the list
             }              
         }
 
